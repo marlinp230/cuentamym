@@ -9,7 +9,7 @@ function Home() {
   const [Clients, setClients] = useState(null)
   useEffect(() => {
     const getData = async () => {
-      const res = await Axios.get('https://puce-motionless-bandicoot.cyclic.app/client')
+      const res = await Axios.get('https://charming-dove-pantsuit.cyclic.app/client')
       console.log(res.data)  
       setClients(res.data)
     }
