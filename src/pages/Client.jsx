@@ -2,11 +2,13 @@ import Axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Spiner from '../componets/Spiner'
-
+import moment from 'moment'
 import Swal from 'sweetalert2'
 
 
-
+const dates= ()=>{
+    return `${moment().format('L')}`
+  }
 
 function Client() {
     const { Nombre } = useParams()
@@ -31,7 +33,7 @@ function Client() {
                 if (!Detalle || !Monto || !Nombre) {
                     Swal.showValidationMessage(`Por favor ponga el Nombre Detalle and Monto.`)
                 }
-                return { Detalle: Detalle, Monto: Monto, Nombre }
+                return { Detalle: Detalle, Monto: Monto, Nombre,Fecha:dates() }
             }
         }).then(async (result) => {
 
@@ -39,6 +41,7 @@ function Client() {
                 Nombre: result.value.Nombre,
                 Detalle: result.value.Detalle,
                 Monto: result.value.Monto,
+                Fecha:dates()
 
             })
 
@@ -64,7 +67,7 @@ function Client() {
         const res = await Axios.get(`https://charming-dove-pantsuit.cyclic.app/client/getclient/${Nombre}`);
         setClient(res.data.client)
         setCaja(res.data.cajadb)
-    }
+    }   
     return (
         <>
             <div className='container'>
