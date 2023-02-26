@@ -41,7 +41,7 @@ function Client() {
                 Nombre: result.value.Nombre,
                 Detalle: result.value.Detalle,
                 Monto: result.value.Monto,
-                Fecha:dates()
+                Fecha:dates() 
 
             })
 
@@ -71,7 +71,7 @@ function Client() {
     return (
         <>
             <div className='container'>
-                <div className="row mt-2 ">
+                <div className="row mt-4 ">
                     <div className="">
                         <button className='btn btn-primary' onClick={SwalAlert} >Add</button>
                     </div>
