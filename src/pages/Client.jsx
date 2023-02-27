@@ -104,6 +104,8 @@ console.log(id)
                                     <div className="Detalle">Detalle: {caja.Detalle}</div>
                                     <div className={`${caja.Monto > 0 ? 'bg-success' : "bg-danger"} `}>Monto: ${caja.Monto}</div>
                                     <div className="fecha bg-primary">Fecha: <strong> {caja.Fecha}</strong></div>
+                                    <div className="id2">id2: {caja.id2}</div>
+
                                 </div>
                             </div>)) : <Spiner />
                     }
