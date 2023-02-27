@@ -9,19 +9,20 @@ import Swal from 'sweetalert2'
 const dates= ()=>{
     return `${moment().format('L')}`
   }
-
+  
 function Client() {
-    const { Nombre } = useParams()
+    const { Nombre ,id} = useParams() 
     const [Client, setClient] = useState(null)
     const [Caja, setCaja] = useState(null)
     const totalCaja = Caja ? Caja.reduce((p, c) => p + c.Monto, 0) : 0
 
-
+console.log(id)
     // <------------------------------------------sweet alert add data to db------------------------------------------------------------------------>
     const SwalAlert = async () => {
         Swal.fire({
             title: Nombre,
             html: `<input type="text" id="Nombre" class="swal2-input" value=${Nombre} disabled='true' placeholder="Nombre">
+            <input type="text" id="id2" class="swal2-input" value=${id} disabled='true' placeholder="Nombre">
         <input type="text" id="Detalle" class="swal2-input" placeholder="Detalle">
         <input type="number" id="Monto" class="swal2-input" placeholder="Monto">`,
             confirmButtonText: 'Guardar',
@@ -30,18 +31,21 @@ function Client() {
                 const Nombre = Swal.getPopup().querySelector('#Nombre').value
                 const Detalle = Swal.getPopup().querySelector('#Detalle').value
                 const Monto = Swal.getPopup().querySelector('#Monto').value
-                if (!Detalle || !Monto || !Nombre) {
+                const id2 = Swal.getPopup().querySelector('#id2').value
+                      console.log(id2,'L35')
+                if (!Detalle || !Monto || !Nombre || !id2 ) {
                     Swal.showValidationMessage(`Por favor ponga el Nombre Detalle and Monto.`)
                 }
-                return { Detalle: Detalle, Monto: Monto, Nombre,Fecha:dates() }
+                return { Detalle: Detalle, Monto: Monto, Nombre,Fecha:dates(),id2 }
             }
         }).then(async (result) => {
-
+               console.log(result.value.id2,'estre')
             const res = await Axios.post('https://charming-dove-pantsuit.cyclic.app/v/', {
                 Nombre: result.value.Nombre,
                 Detalle: result.value.Detalle,
                 Monto: result.value.Monto,
-                Fecha:dates() 
+                Fecha:dates(),
+                id2:result.value.id2
 
             })
 
