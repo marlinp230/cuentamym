@@ -24,8 +24,8 @@ function Home() {
         <div className="row">
 
           {
-            Clients? Clients.map(client => (
-              <Client client={client}/>
+            Clients? Clients.map((client,index) => (
+              <Client client={client} key={index}/>
               
             )):<Spiner/>
           }

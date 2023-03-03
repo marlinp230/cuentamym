@@ -124,10 +124,7 @@ function Client() {
        
     }
      // <-----------------------------------------------------------delete database caja------------------------------------------------------------------------>
-     const UpdateDATA = async (id) => {
-        console.log(id,'up')
-       
-    }
+  
     // <-----------------------------------------------------------useEffect------------------------------------------------------------------------>
 
     useEffect(() => {
@@ -191,7 +188,7 @@ function Client() {
                                     <div className="fecha bg-primary">Fecha: <strong> {caja.Fecha}</strong></div>
                                     <div className="id2">id2: {caja.id2}</div>
                                     <div className="opts">
-                                        <button className='btn btn-info btn-sm m-2' onClick={()=>{UpdateDATA((caja._id))}}>Update</button>
+                                       
                                         <button className='btn btn-danger btn-sm m-2'onClick={()=>{DeleteDATA(caja._id)}}>Delete</button>
 
                                     </div>
