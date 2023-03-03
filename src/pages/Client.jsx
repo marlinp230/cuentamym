@@ -102,6 +102,23 @@ function Client() {
             })
            }
 
+           if (result.value.id === result.value.id2) {
+            const res= await Axios.delete(`https://charming-dove-pantsuit.cyclic.app/v/${result.value.id2}`)
+            console.log(res.data)
+           if (res.data.status) {
+            Swal.fire({
+                title: `${res.data.message}`
+            })
+            data()
+           }else{
+            Swal.fire({
+                title: `CANT BE DELETED ${result.value.id2}`
+            })
+
+           }
+          
+           }
+
 
         })
        
