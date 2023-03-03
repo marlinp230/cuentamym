@@ -6,7 +6,7 @@ function Navbar() {
     const [Name, setName] = useState('')
 const OnSudmit= (e)=>{
     e.preventDefault()
-    console.log(e.tag.value)
+    console.log("hello",Name)
 
 }
     return (
