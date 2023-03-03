@@ -149,7 +149,7 @@ function Client() {
     }
     return (
         <>
-        <Navbar/>
+        
             <div className='container mt-4 text-center'>
                 <div className="row  ">
                     <div className="col-1 col-md-4 col-lg-4 card-body bg-info border d-flex">
