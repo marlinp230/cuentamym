@@ -40,11 +40,11 @@ const Addname =()=>{
         })
          
         if (res) {
-            console.log('12345678')
+            console.log('123456789')
             Swal.fire({
                 title: "Se anadio correctamente"
             })
-            getData()
+            getData()   
           
         }
 
