@@ -1,58 +1,59 @@
 
+import  Axios  from 'axios'
+import moment from 'moment'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
 
-function Navbar({Search, setSearch}) {
+function Navbar({Search, setSearch,getData}) {
 
-const OnSudmit= (e)=>{
-    e.preventDefault()
-    console.log("hello",Search)
-
-}
-
+    const dates = () => {
+        return `${moment().format('L')}`
+    }
 const Addname =()=>{
     Swal.fire({
         title: "Add Client",
         html: `<input type="text" id="Nombre" class="swal2-input"  placeholder="Nombre">
-        
-    <input type="text" id="Telefono" class="swal2-input" placeholder="Telefono">
-    <input type="number" id="Monto" class="swal2-input" placeholder="Monto">`,
+        <input type="text" id="Telefono" class="swal2-input" placeholder="Telefono">`,
         confirmButtonText: 'Guardar',
         focusConfirm: false,
         preConfirm: () => {
             const Nombre = Swal.getPopup().querySelector('#Nombre').value
             const Telefono = Swal.getPopup().querySelector('#Telefono').value
-            const Monto = Swal.getPopup().querySelector('#Monto').value
-            const id2 = Swal.getPopup().querySelector('#id2').value
-            console.log(id2, 'L35')
-            if (!Telefono || !Monto || !Nombre || !id2) {
-                Swal.showValidationMessage(`Por favor ponga el Nombre Telefono and Monto.`)
+         
+           
+           
+            if (!Telefono || !Nombre ) {
+                Swal.showValidationMessage(`Por favor ponga el Nombre Telefono`)
             }
-            return { Telefono: Telefono, Monto: Monto, Nombre, id2 }
+            return { Telefono, Nombre}
         }
     }).then(async (result) => {
-        console.log(result.value.id2, 'estre')
-        // const res = await Axios.post('https://charming-dove-pantsuit.cyclic.app/v/', {
-        //     Nombre: result.value.Nombre,
-        //     Detalle: result.value.Detalle,
-        //     Monto: result.value.Monto,
-        //     Fecha,
-        //     id2: result.value.id2
+        console.log(result, 'result')
+        // { Fecha, Nombre,Telefono,orden:orden.length+1 }
+        const res = await Axios.post('https://charming-dove-pantsuit.cyclic.app/client/', {
+            Nombre: result.value.Nombre,
+            Telefono: result.value.Telefono,
+            Fecha:dates()
+           
 
-        // })
+        })
 
-        // if (res) {
-        //     console.log('12345678')
-        //     Swal.fire({
-        //         title: "Se anadio correctamente"
-        //     })
+        if (res) {
+            console.log('12345678')
+            Swal.fire({
+                title: "Se anadio correctamente"
+            })
+            getData()
           
-        // }
+        }
 
 
     })
 
+}
+const onSubmit=(e)=>{
+    e.preventDefault()
 }
     return (
         <>
@@ -73,7 +74,7 @@ const Addname =()=>{
                                 <Link className="nav-link disabled" to="/" tabindex="-1" aria-disabled="true">Disabled</Link>
                             </li>
                         </ul>
-                        <form className="d-flex" onSubmit={OnSudmit}> 
+                        <form className="d-flex" onSubmit={onSubmit}> 
                                 <input className="form-control m-2" type="text" placeholder="Add Name" aria-label="Search"name='Name'  value={Search} onChange={(e)=>setSearch(e.target.value)}/>
                                 <button className="btn btn-outline-dark" type="submit" onClick={Addname}>Add Name</button>
                         </form>
