@@ -5,7 +5,7 @@ import Client from '../componets/Client'
 import Navbar from '../componets/Navbar'
 import Spiner from '../componets/Spiner'
 
-function Home() {
+function Home({Search, setSearch}) {
   const [Clients, setClients] = useState(null)
   useEffect(() => {
     const getData = async () => {
@@ -19,7 +19,7 @@ function Home() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar Search={Search} setSearch={setSearch} />
       <div className="container text-center">
         <div className="row">
 

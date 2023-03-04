@@ -18,7 +18,7 @@ const reducer = (state, action) => {
 
 }
 
-function Client() {
+function Client({Search}) {
     const [{ loading, error, Caja }, dispatch] = useReducer(reducer, { loading: true, error: '' })
 
     const { Nombre, id } = useParams()
