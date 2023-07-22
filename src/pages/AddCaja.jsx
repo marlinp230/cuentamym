@@ -12,7 +12,7 @@ function AddCaja() {
     useEffect(() => {
         const getData = async () => {
             // https://charming-dove-pantsuit.cyclic.app/
-            const res = await Axios.get('https://charming-dove-pantsuit.cyclic.app/client/')
+            const res = await Axios.get('https://back-mym.herokuapp.com/client/')
             console.log(res)
             setClients(res.data)
         }
