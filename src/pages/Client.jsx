@@ -52,7 +52,7 @@ function Client({Search}) {
             }
         }).then(async (result) => {
             console.log(result.value.id2, 'estre')
-            const res = await Axios.post('https://charming-dove-pantsuit.cyclic.app/v/', {
+            const res = await Axios.post('https://back-mym.herokuapp.com/v/', {
                 Nombre: result.value.Nombre,
                 Detalle: result.value.Detalle,
                 Monto: result.value.Monto,
@@ -103,7 +103,7 @@ function Client({Search}) {
            }
 
            if (result.value.id === result.value.id2) {
-            const res= await Axios.delete(`https://charming-dove-pantsuit.cyclic.app/v/${result.value.id2}`)
+            const res= await Axios.delete(`https://back-mym.herokuapp.com/v/${result.value.id2}`)
             console.log(res.data)
            if (res.data.status) {
             Swal.fire({
