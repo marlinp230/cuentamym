@@ -13,7 +13,7 @@ function Home({Search, setSearch}) {
   }, [])
 
   const getData = async () => {
-    const res = await Axios.get('https://charming-dove-pantsuit.cyclic.app/client')
+    const res = await Axios.get('https://back-mym.herokuapp.com/client')
     console.log(res.data)  
     setClients(res.data)
   }
